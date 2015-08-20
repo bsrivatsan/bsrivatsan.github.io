@@ -16,7 +16,7 @@
 
 	hr {
 		max-width: 50px;
-		border-color: #B80505;
+		border-color: #810404;
 		border-width: 3px;
 	}
 
@@ -54,7 +54,7 @@
 	
 /* Background and Sections */
 	.bg-primary {
-		background-color: #B80505;
+		background-color: #810404;
 	}
 
 	.bg-dark {
