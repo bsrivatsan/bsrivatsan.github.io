@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
 
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/creative.css" type="text/css">
@@ -53,16 +52,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="about.html">About</a>
+                        <a class="page-scroll" href="about.html"><i class="fa fa-user fa-fw"></i> About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="blog.html">Blog</a>
+                        <a class="page-scroll" href="blog.html"><i class="fa fa-list fa-fw"></i> Blog</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="photography.html">Photography</a>
+                        <a class="page-scroll" href="photography.html"><i class="fa fa-camera fa-fw"></i> Photography</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="#contact"><i class="fa fa-envelope fa-fw"></i> Contact</a>
                     </li>
                 </ul>
             </div>
@@ -74,45 +73,62 @@
     <header id = "header-about">
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 style = "background-color: black">About Bharath</h1>
+                <h1>About Bharath</h1>
             </div>
         </div>
     </header>
 
-    <section class="bg-primary" id="about">
+    <section class="bg-primary" id="education">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Education</h2>
+                    <h2 class="section-heading"><b>Education</b></h2>
                     <hr class="light">
-                    <p class="text-faded">Information</p>
+                    <h3>Princeton University</h3>
+                    <p class="text-faded"><i>2014-2018</i></p>
+                    <p class="text-faded">I'm a rising sophomore at Princeton, majoring in Computer Science with a certificate (minor) in Values and Public Life (Philosophy). On campus, I'm an undergraduate fellow at the James Madison Program in American Ideals and Institutions, a board member for Princeton Hindu Satsangam, and I debate actively with the Princeton Debate Panel (see my record <a href="http://apdaweb.org/results/debater/2634" target="_blank" style="color:white">here</a>).</p>
+
+                    <h3>Singapore American School</h3>
+                    <p class="text-faded"><i>2007-2014</i></p>
+                    <p class="text-faded">I graduated Singapore American School High School in 2014 at the top of my class. While there, I debated, chaired Model UN conferences, tutored others in math and science, built robots, and generally had a blast.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <section id = "work">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Let's Get In Touch!</h2>
-                    <hr class="primary">
-                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
-                    <p>123-456-6789</p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a></p>
+                <div class="col-lg-8 col-lg-offset-2 text-left">
+                    <h2 class="section-heading text-center"><b>Projects</b></h2>
+                    <hr>
+                    <div id="projects">
+                    <img src="http://puu.sh/jIfsK/1a66b725b1.jpg">
+                    <h3>Business Today International Conference</h3>
+                    <p><i>2015</i></p>
+                    <p>I'm currently the Chief of Staff for Business Today's 41st International Conference. I'll be working with executives like Muhtar Kent (CEO, Coca Cola), Chung Mong-Koo (CEO, Hyundai), C-suite officials from Dell, and many others. I'm also marketing the conference to thousands of students in the hopes of picking the top 150 business students from 40+ countries around the globe. Learn more <a href="http://www.businesstoday.org/conferences/41st-international-conference/" target="_blank" style="color:#B80505">here.</a></p>
+                    </div>
+
+                    <div id="projects">
+                    <img src="http://puu.sh/jIhTV/b1c5352026.jpg">
+                    <h3>TigerLaunch</h3>
+                    <p><i>2015</i></p>
+                    <p>I'm also a part of the team that organizes TigerLaunch, Princeton Entrepreneurship Club's annual startup competition. We pick 20 startups to join us in Princeton for a Demo Day involving contestants, entrepreneurs, and VCs, and hand out thousands of dollars to the winners. Learn more <a href="http://www.tigerlaunch.io/" target="_blank" style="color:#B80505">here.</a></p>
+                    </div>
+
+                    <div id="projects">
+                    <img src="http://puu.sh/jIbUV/93bc446015.jpg">
+                    <h3>TigerCUB</h3>
+                    <p><i>2014-2015</i></p>
+                    <p>Last Fall, I helped develop a certificate utility for Princeton undergrads that helped students find minors and develop a course plan based on courses they'd taken in the past. We won the award for Best TigerApp at HackPrinceton Fall 2014, and the project is currently being developed into a fully-fledged application for Princeton students to use. See our project <a href="http://hackprincetonf2014.devpost.com/submissions/29939-tigercub" target="_blank" style="color:#B80505">here.</a></p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+        </section>
 
-    <a  name="contact"></a>
-
-    <footer id="footer">
+    <a name="contact"></a>
+    <div id="footer">
         <ul class="actions">
             <span style="float:left;">
             <li><a href="https://github.com/bsrivatsan" target="_blank" class="icon fa fa-github fa-2x"></a></li>
@@ -126,7 +142,7 @@
             <li> &copy; BHARATH SRIVATSAN 2015</li>
             </span>
         </ul>
-    </footer>
+    </div>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
