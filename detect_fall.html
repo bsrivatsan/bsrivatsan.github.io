@@ -37,7 +37,10 @@ if (window.DeviceMotionEvent != undefined) {
 		document.getElementById("accelerationY").innerHTML = e.accelerationIncludingGravity.y;
 		document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
 
-		if (e.accelerationIncludingGravity.y < -9.81) {
+		if (e.accelerationIncludingGravity.y >= -9.81) {
+			document.getElementById("changethis").innerHTML = "";
+		}
+		else {
 			document.getElementById("changethis").innerHTML = "YES";
 		}
 
