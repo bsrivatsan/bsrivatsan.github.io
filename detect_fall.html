@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="template">
-    <p>Baseline HTML boilerplate.</p>
+    <p>Fall: <span id="changethis"></span></p>
   </div>
 
  <ul>
@@ -58,19 +58,12 @@ if (window.DeviceMotionEvent != undefined) {
 		y = parseInt(y + vy / 50);
 		x = parseInt(x + vx / 50);
 		
-		boundingBoxCheck();
-		
 	}, 25);
+
+	if (accelerationY < -9.81) {
+		document.getElementById("changethis").innerHTML = "YES";
+	}
 } 
-
-
-function boundingBoxCheck(){
-	if (x<0) { x = 0; vx = -vx; }
-	if (y<0) { y = 0; vy = -vy; }
-	if (x>document.documentElement.clientWidth-20) { x = document.documentElement.clientWidth-20; vx = -vx; }
-	if (y>document.documentElement.clientHeight-20) { y = document.documentElement.clientHeight-20; vy = -vy; }
-	
-}
 
 </script>
 
