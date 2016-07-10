@@ -19,23 +19,15 @@
       testAPI();
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
+      window.open('https://www.facebook.com/dialog/oauth?client_id='+156379394772344+'&redirect_uri='+ document.location.href +'&scope=email,public_profile', '', null);
       document.getElementById('status').innerHTML = 'Please log ' +
         'into this app.';
-        // fix iOS Chrome
-if( navigator.userAgent.match('CriOS') )
-    window.open('https://www.facebook.com/dialog/oauth?client_id='+appID+'&redirect_uri='+ document.location.href +'&scope=email,public_profile', '', null);
-else
-    FB.login(null, {scope: 'email,public_profile'});
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
+      window.open('https://www.facebook.com/dialog/oauth?client_id='+156379394772344+'&redirect_uri='+ document.location.href +'&scope=email,public_profile', '', null);
       document.getElementById('status').innerHTML = 'Please log ' +
         'into Facebook.';
-        // fix iOS Chrome
-if( navigator.userAgent.match('CriOS') )
-    window.open('https://www.facebook.com/dialog/oauth?client_id='+appID+'&redirect_uri='+ document.location.href +'&scope=email,public_profile', '', null);
-else
-    FB.login(null, {scope: 'email,public_profile'});
     }
   }
 
