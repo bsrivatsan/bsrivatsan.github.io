@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta property="og:url" content="http://bharathsrivatsan.com/detect_fall.html"/>
+  <meta property="og:title" content="tracking.js - tag friends"/>
+  <meta property="og:type" content="website" />
+  <title>tracking.js - tag friends</title>
+  <link rel="stylesheet" href="assets/demo.css">
+
+</head>
+<body>
+  <div class="template">
+    <p>Fall: <span id="changethis"></span></p>
+  </div>
+   <div id="fb-root"></div>
+
+ <ul>
+	<li>acceleration x: <span id="accelerationX"></span>g</li>
+	<li>acceleration y: <span id="accelerationY"></span>g</li>
+	<li>acceleration z: <span id="accelerationZ"></span>g</li>
+	<li>rotation alpha: <span id="rotationAlpha"></span>degree</li>
+	<li>rotation beta: <span id="rotationBeta"></span>degree</li>
+	<li>rotation gamma: <span id="rotationGamma"></span>degree</li>
+</ul>
+
+test: <span id="test"></span>
+</div>
+
+<script type="text/javascript">
+
+var x = 0, y = 0,
+    vx = 0, vy = 0,
+	ax = 0, ay = 0;
+
+if (window.DeviceMotionEvent != undefined) {
+	window.ondevicemotion = function(e) {
+		ax = event.accelerationIncludingGravity.x * 5;
+		ay = event.accelerationIncludingGravity.y * 5;
+		document.getElementById("accelerationX").innerHTML = e.accelerationIncludingGravity.x;
+		document.getElementById("accelerationY").innerHTML = e.accelerationIncludingGravity.y;
+		document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
+
+		// detects when the user falls using free fall
+		if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 8) {
+
+			document.getElementById("changethis").innerHTML = "w0w0w0w0w";
+
+			// facebook stuff
+			window.opener.handleAuth();
+			window.close();
+  			
+  		}
+
+
+		// rotation rate and orientation
+		if ( e.rotationRate ) {
+			document.getElementById("rotationAlpha").innerHTML = e.rotationRate.alpha;
+			document.getElementById("rotationBeta").innerHTML = e.rotationRate.beta;
+			document.getElementById("rotationGamma").innerHTML = e.rotationRate.gamma;
+		}		
+	}
+
+	setInterval( function() {
+		var landscapeOrientation = window.innerWidth/window.innerHeight > 1;
+		if ( landscapeOrientation) {
+			vx = vx + ay;
+			vy = vy + ax;
+		} else {
+			vy = vy - ay;
+			vx = vx + ax;
+		}
+		vx = vx * 0.98;
+		vy = vy * 0.98;
+		y = parseInt(y + vy / 50);
+		x = parseInt(x + vx / 50);
+		
+	}, 25);
+} 
+
+function handleAuth(){
+    // once the window is open 
+    window.opener.fbCompleteLogin();
+    window.close();    
+}
+var ABSOLUTE_URI = "www.bharathsrivatsan.com";
+var FB_ID = "156379394772344";
+function openFBLoginDialogManually(){
+  // Open your auth window containing FB auth page 
+  // with forward URL to your Opened Window handler page (below)
+  
+  var redirect_uri = "&redirect_uri=" + ABSOLUTE_URI + "fbjscomplete";
+  var scope = "&scope=public_profile,email,user_friends";
+  var url = "https://www.facebook.com/dialog/oauth?client_id=" + FB_ID + redirect_uri + scope;
+
+  // notice the lack of other param in window.open
+  // for some reason the opener is set to null
+  // and the opened window can NOT reference it
+  // if params are passed. #Chrome iOS Bug
+  window.open(url);
+
+}
+
+function fbCompleteLogin(){
+  
+  FB.getLoginStatus(function(response) {
+    // Calling this with the extra setting "true" forces
+    // a non-cached request and updates the FB cache.
+    // Since the auth login elsewhere validated the user
+    // this update will now asyncronously mark the user as authed
+  }, true);
+  
+}
+
+function requireLogin(callback){
+
+    FB.getLoginStatus(function(response) {
+        if (response.status != "connected"){
+            showLogin();
+        }else{
+            checkAuth(response.authResponse.accessToken, response.authResponse.userID, function(success){
+              // Check FB tokens against your API to make sure user is valid
+            });
+        }
+    });
+    
+}
+
+</script>
+
+</body>
+</html>
