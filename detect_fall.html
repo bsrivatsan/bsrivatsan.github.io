@@ -2,6 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta property="og:url" content="http://bharathsrivatsan.com/detect_fall.html"/>
+  <meta property="og:title" content="tracking.js - tag friends"/>
+  <meta property="og:type" content="website" />
   <title>tracking.js - tag friends</title>
   <link rel="stylesheet" href="assets/demo.css">
 
@@ -10,6 +13,7 @@
   <div class="template">
     <p>Fall: <span id="changethis"></span></p>
   </div>
+   <div id="fb-root"></div>
 
  <ul>
 	<li>acceleration x: <span id="accelerationX"></span>g</li>
@@ -37,11 +41,47 @@ if (window.DeviceMotionEvent != undefined) {
 		document.getElementById("accelerationY").innerHTML = e.accelerationIncludingGravity.y;
 		document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
 
+		// detects when the user falls using free fall
 		if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) <= 8) {
+
 			document.getElementById("changethis").innerHTML = "YES";
-			alert("I FELL!");
+
+			// send alert to emergency contact
+			// Load the FB SDK Asynchronously
+			(function(d){
+			    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+			    if (d.getElementById(id)) {return;}
+			    js = d.createElement('script'); js.id = id; js.async = true;
+			    js.src = "//connect.facebook.net/en_US/all.js";
+			    ref.parentNode.insertBefore(js, ref);
+			}(document));
+			
+			window.fbAsyncInit = function() {
+			    FB.init({
+			    	appId      : '156379394772344',
+			        status     : true, // check login status
+			        cookie     : true, // enable cookies to allow the server to access the session
+			        xfbml      : true  // parse XFBML
+			    });
+			};
+
+			function send_private_msg_to_fb_user(){
+      			FB.login(function(response){
+	         		if (response.authResponse){
+	            		FB.ui({
+	               			method: 'send',
+	               			name: 'Send Private Message to Facebook User using Javascript Facebook API',  
+	               			link: 'http://www.techsirius.com/2012/12/send-private-message-to-facebook-user.html',  
+	              			description: 'In this tutorial I will show you how to send private message to facebook user using Javascript Facebook API. Although it looks very complicated but in real it is very simple, just follow the tutorial.'
+	   					});
+  					}
+ 				});
+			}
 		}
 
+
+
+		// rotation rate and orientation
 		if ( e.rotationRate ) {
 			document.getElementById("rotationAlpha").innerHTML = e.rotationRate.alpha;
 			document.getElementById("rotationBeta").innerHTML = e.rotationRate.beta;
