@@ -37,10 +37,7 @@ if (window.DeviceMotionEvent != undefined) {
 		document.getElementById("accelerationY").innerHTML = e.accelerationIncludingGravity.y;
 		document.getElementById("accelerationZ").innerHTML = e.accelerationIncludingGravity.z;
 
-		if (e.accelerationIncludingGravity.y >= -12) {
-			document.getElementById("changethis").innerHTML = "";
-		}
-		else {
+		if (Math.sqrt((e.accelerationIncludingGravity.x * e.accelerationIncludingGravity.x) + (e.accelerationIncludingGravity.y * e.accelerationIncludingGravity.y) + (e.accelerationIncludingGravity.z * e.accelerationIncludingGravity.z)) == 0) {
 			document.getElementById("changethis").innerHTML = "YES";
 			alert("I FELL!");
 		}
