@@ -46,28 +46,24 @@ if (window.DeviceMotionEvent != undefined) {
 
 			document.getElementById("changethis").innerHTML = "YES";
 
+			// facebook stuff
 			window.fbAsyncInit = function() {
-				FB.init({
-			    	appId      : '156379394772344',
-			    	xfbml      : true,
-			    	version    : 'v2.6'
-			    });
-			};
+    			FB.init({
+      				appId      : 'your-app-id',
+      				xfbml      : true,
+      				version    : 'v2.6'
+    			});
+  			};
 
-			(function(d, s, id){
-				var js, fjs = d.getElementsByTagName(s)[0];
-			    if (d.getElementById(id)) {return;}
-			    js = d.createElement(s); js.id = id;
-			    js.src = "//connect.facebook.net/en_US/sdk.js";
-			    fjs.parentNode.insertBefore(js, fjs);
-			}(document, 'script', 'facebook-jssdk'));
-
-			FB.ui({
-  				method: 'send',
-  				link: 'http://www.nytimes.com/interactive/2015/04/15/travel/europe-favorite-streets.html',
-			});
-		}
-
+  			FB.getLoginStatus(function(response) {
+  			 	if (response.status === 'connected') {
+  			    	console.log('Logged in.');
+  			  	}
+  			  	else {
+  			    	FB.login();
+  			  	}
+  			});
+  		}
 
 
 		// rotation rate and orientation
