@@ -54,14 +54,12 @@ if (window.DeviceMotionEvent != undefined) {
       				version    : 'v2.6'
     			});
   			};
-  			FB.getLoginStatus(function(response) {
-  			 	if (response.status === 'connected') {
-  			    	console.log('Logged in.');
-  			  	}
-  			  	else {
-  			    	FB.login();
-  			  	}
-  			});
+
+  			console.log('Welcome!  Fetching your information.... ');
+    		FB.api('/me', function(response) {
+      			console.log('Successful login for: ' + response.name);
+    		});
+  			
   		}
 
 
