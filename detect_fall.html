@@ -46,37 +46,26 @@ if (window.DeviceMotionEvent != undefined) {
 
 			document.getElementById("changethis").innerHTML = "YES";
 
-			// send alert to emergency contact
-			// Load the FB SDK Asynchronously
-			(function(d){
-			    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-			    if (d.getElementById(id)) {return;}
-			    js = d.createElement('script'); js.id = id; js.async = true;
-			    js.src = "//connect.facebook.net/en_US/all.js";
-			    ref.parentNode.insertBefore(js, ref);
-			}(document));
-			
 			window.fbAsyncInit = function() {
-			    FB.init({
+				FB.init({
 			    	appId      : '156379394772344',
-			        status     : true, // check login status
-			        cookie     : true, // enable cookies to allow the server to access the session
-			        xfbml      : true  // parse XFBML
+			    	xfbml      : true,
+			    	version    : 'v2.6'
 			    });
 			};
 
-			function send_private_msg_to_fb_user(){
-      			FB.login(function(response){
-	         		if (response.authResponse){
-	            		FB.ui({
-	               			method: 'send',
-	               			name: 'Send Private Message to Facebook User using Javascript Facebook API',  
-	               			link: 'http://www.techsirius.com/2012/12/send-private-message-to-facebook-user.html',  
-	              			description: 'In this tutorial I will show you how to send private message to facebook user using Javascript Facebook API. Although it looks very complicated but in real it is very simple, just follow the tutorial.'
-	   					});
-  					}
- 				});
-			}
+			(function(d, s, id){
+				var js, fjs = d.getElementsByTagName(s)[0];
+			    if (d.getElementById(id)) {return;}
+			    js = d.createElement(s); js.id = id;
+			    js.src = "//connect.facebook.net/en_US/sdk.js";
+			    fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
+			FB.ui({
+  				method: 'send',
+  				link: 'http://www.nytimes.com/interactive/2015/04/15/travel/europe-favorite-streets.html',
+			});
 		}
 
 
